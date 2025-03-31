@@ -43,4 +43,5 @@ In this task, we analyzed an audio recording containing synthetic signals in bot
 ### 2.2 Frequency Domain Signal Processing
 We repeated the analysis from task 2.1 in the frequency domain. We performed the conjugate multiplication of the Fourier transform of the reference pulse `ypf` and the Fourier transform of the audio signal `yf`. Zero-padding was applied to the pulse signal to match the length of the audio signal's Fourier transform. We then used the inverse FFT (`ifft`) to compute the correlation in the time domain and compared the results with the time-domain correlation. The task involved visualizing the time-domain signals, comparing them with the frequency-domain filtering, and discussing the results.
 
+---
 
