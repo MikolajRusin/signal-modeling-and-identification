@@ -11,16 +11,34 @@ This task focused on understanding spectral leakage and the effects of windowing
 ### 1.3 Sampling Frequency Change
 Here, we created a signal consisting of two cosines at frequencies of 125 Hz and 375 Hz and analyzed the effect of downsampling the signal by keeping every second sample. The task involved comparing the frequency spectra and time-domain signals of the original and downsampled signals. We further explored the effects of downsampling on the frequency spectrum, particularly in terms of aliasing and frequency resolution.
 
-## Laboratory 2
+# Laboratory 2 Tasks 🎶
 
-### 1.1 Signal Correlation
-In this task, we generated a signal `y` with a sampling frequency of 2000 Hz and length of 2000 samples. We then created a chirp signal `yp` with a variable frequency, starting at 10 Hz and ending at 300 Hz. Using correlation (`xcorr`) and convolution (`conv`), we compared the results and analyzed the differences in the time-domain plots. We also experimented with different parameter combinations for the chirp signal to observe how the time-domain width of the correlation result depends on the signal’s frequency bandwidth.
+## 1. Signal Correlation 📡
 
-### 1.2 Matched Filtering
-We applied matched filtering to detect impulses in an audio recording containing synthetic signals in the form of sinusoids with increasing frequency. We used the provided reference pulse to perform matched filtering and detect the impulses in both channels of the audio signal. The task involved working in both the time and frequency domains using FFT and inverse FFT to improve the detection accuracy.
+### 1.1 Signal Generation and Correlation
+In this task, we created a signal `y` with a sampling frequency of 2000 Hz and a length of 2000 samples. An empty signal vector was initialized, followed by the creation of a second chirp signal `yp` with a frequency range from 10 Hz to 300 Hz. The chirp signal was multiplied by a Hanning window of the same length. The signal `yp` was added to `y` starting from the 500th sample. Next, we calculated the correlation between `y` and `yp` using the `correlate` function and plotted the results in the time domain. We also compared the results using the convolution function (`convolve`) and discussed the differences in their implementation.
 
-### 1.3 Signal Detection with Noise
-This task extended the previous impulse detection exercise by introducing white noise with varying amplitudes into the signal. We performed correlation analysis on the noisy signal and observed the effects of noise on the detection of the impulse. We analyzed how the correlation results varied with different levels of noise and assessed the effectiveness of matched filtering in identifying the signal amidst the noise.
+### 1.2 Correlation with Varying Parameters
+We performed correlation on signals with different frequency parameters:
+- The length of `yp` was 200 samples with different values for `f2` (100 Hz, 200 Hz, 500 Hz) while `f1` remained 30 Hz.
+- The second set of tests used `f1 = 500 Hz` and `f2 = 500 Hz`.
 
-### 1.4 Frequency Domain Signal Processing
-In this task, we processed the audio signal in the frequency domain by multiplying the Fourier transform of the reference pulse with the Fourier transform of the noisy signal. We performed zero-padding to match the length of the signals before applying inverse FFT to get the correlation result in the time domain. The task involved comparing time-domain results with those obtained from direct correlation and discussing the differences.
+We plotted the correlation results for each combination and analyzed the relationship between the time width of the correlation result and the frequency bandwidth of the signal `yp`.
+
+### 1.3 Impulse Detection in Signal with Multiple Instances
+We added a signal `yp` with a length of 1000 samples (starting at 500th and 750th samples with amplitudes of 1 and 0.5, respectively) to `y`. We then calculated the correlation between the newly created signal `y` and `yp` and analyzed the detected impulses. We calculated the time intervals between the impulses and discussed how their locations relate to the positions of `yp` within `y`.
+
+### 1.4 Signal Correlation with Noise 🌫️
+We added white noise with varying standard deviations (0.5, 1, and 2) to the signal `y` created in task 1.3. We performed correlation between the noisy signal and `yp`, and plotted the results in the time domain for each noise level. The task involved analyzing how noise levels affected the visibility of correlation peaks in the signal.
+
+---
+
+## 2. Matched Filtering 🎯
+
+### 2.1 Signal Detection in Audio Recording
+In this task, we analyzed an audio recording containing synthetic signals in both channels with increasing frequencies. The goal was to locate the impulses within the audio recording. The reference impulse was provided in the file `pulse.csv`. The audio to analyze is provided in the file `audio.wav`. Using matched filtering, we detected the impulses and identified the exact locations and channels where the signal appeared.
+
+### 2.2 Frequency Domain Signal Processing
+We repeated the analysis from task 2.1 in the frequency domain. We performed the conjugate multiplication of the Fourier transform of the reference pulse `ypf` and the Fourier transform of the audio signal `yf`. Zero-padding was applied to the pulse signal to match the length of the audio signal's Fourier transform. We then used the inverse FFT (`ifft`) to compute the correlation in the time domain and compared the results with the time-domain correlation. The task involved visualizing the time-domain signals, comparing them with the frequency-domain filtering, and discussing the results.
+
+
