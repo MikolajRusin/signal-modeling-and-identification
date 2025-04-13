@@ -13,7 +13,7 @@ Here, we created a signal consisting of two cosines at frequencies of 125 Hz and
 
 ---
 
-# Laboratory 2 Tasks 🎶
+# Laboratory 2 🎶
 
 ## 1. Signal Correlation 📡
 
