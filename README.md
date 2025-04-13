@@ -1,5 +1,7 @@
 # Laboratory Tasks
 
+---
+
 # Laboratory 1
 
 ### 1.1 Frequency Resolution 📏
