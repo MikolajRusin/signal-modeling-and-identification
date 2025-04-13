@@ -4,13 +4,13 @@
 
 # Laboratory 1
 
-### 1.1 Frequency Resolution 📏
+## 1.1 Frequency Resolution 📏
 In this task, we created a signal `y` consisting of two sinusoids at frequencies of 30 Hz and 30.5 Hz. We then calculated the Fourier Transform of the signal using FFT and plotted its amplitude-frequency spectrum. The task involved analyzing the relationship between signal length and frequency resolution by adjusting the signal length until both frequency components were clearly distinguishable. 
 
-### 1.2 Spectral Leakage and Windowing 🪟
+## 1.2 Spectral Leakage and Windowing 🪟
 We created a signal consisting of a 7 Hz sine wave and a 20 Hz cosine wave. We calculated the Fourier Transform of this signal and analyzed the spectrum using a logarithmic scale. The task also included exploring the effects of changing the number of samples on spectral leakage. We applied a Hanning window to the signal to reduce spectral leakage and compared the resulting frequency spectrum with the original signal.
 
-### 1.3 Sampling Frequency Change 📉
+## 1.3 Sampling Frequency Change 📉
 Here, we created a signal consisting of two cosines at frequencies of 125 Hz and 375 Hz and explored the effect of downsampling the signal by keeping every second sample. We compared the frequency spectra and time-domain signals of the original and downsampled signals, and analyzed the impact of downsampling on the frequency spectrum and resolution.
 
 ---
