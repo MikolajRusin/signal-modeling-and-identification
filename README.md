@@ -1,6 +1,6 @@
 # Laboratory Tasks
 
-## Laboratory 1
+# Laboratory 1
 
 ### 1.1 Frequency Resolution 📏
 In this task, we created a signal `y` consisting of two sinusoids at frequencies of 30 Hz and 30.5 Hz. We then calculated the Fourier Transform of the signal using FFT and plotted its amplitude-frequency spectrum. The task involved analyzing the relationship between signal length and frequency resolution by adjusting the signal length until both frequency components were clearly distinguishable. 
