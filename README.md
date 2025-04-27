@@ -1,19 +1,21 @@
 # Laboratory Tasks
 
-## Laboratory 1
+---
 
-### 1.1 Frequency Resolution 📏
+# Laboratory 1
+
+## 1.1 Frequency Resolution 📏
 In this task, we created a signal `y` consisting of two sinusoids at frequencies of 30 Hz and 30.5 Hz. We then calculated the Fourier Transform of the signal using FFT and plotted its amplitude-frequency spectrum. The task involved analyzing the relationship between signal length and frequency resolution by adjusting the signal length until both frequency components were clearly distinguishable. 
 
-### 1.2 Spectral Leakage and Windowing 🪟
+## 1.2 Spectral Leakage and Windowing 🪟
 We created a signal consisting of a 7 Hz sine wave and a 20 Hz cosine wave. We calculated the Fourier Transform of this signal and analyzed the spectrum using a logarithmic scale. The task also included exploring the effects of changing the number of samples on spectral leakage. We applied a Hanning window to the signal to reduce spectral leakage and compared the resulting frequency spectrum with the original signal.
 
-### 1.3 Sampling Frequency Change 📉
+## 1.3 Sampling Frequency Change 📉
 Here, we created a signal consisting of two cosines at frequencies of 125 Hz and 375 Hz and explored the effect of downsampling the signal by keeping every second sample. We compared the frequency spectra and time-domain signals of the original and downsampled signals, and analyzed the impact of downsampling on the frequency spectrum and resolution.
 
 ---
 
-# Laboratory 2 Tasks 🎶
+# Laboratory 2 🎶
 
 ## 1. Signal Correlation 📡
 
@@ -44,4 +46,34 @@ In this task, we analyzed an audio recording containing synthetic signals in bot
 We repeated the analysis from task 2.1 in the frequency domain. We performed the conjugate multiplication of the Fourier transform of the reference pulse `ypf` and the Fourier transform of the audio signal `yf`. Zero-padding was applied to the pulse signal to match the length of the audio signal's Fourier transform. We then used the inverse FFT (`ifft`) to compute the correlation in the time domain and compared the results with the time-domain correlation. The task involved visualizing the time-domain signals, comparing them with the frequency-domain filtering, and discussing the results.
 
 ---
+
+# Laboratory 3 ⚡ RLC Circuit Analysis
+
+## 1. RLC Circuit Modeling and Frequency Response 📈
+
+### 1.1 Impulse Response of the RLC Circuit  
+We modeled an RLC circuit using its transfer function based on Kirchhoff's laws.  
+The impulse response of the system was calculated analytically in the time domain using the `forced_response` function.  
+System parameters: \( R = 10 Ohm), \( C = 1\*10^-6 F), \( L = 4\*10-6 H).
+
+### 1.2 Bode Plot and Damping Estimation  
+The Bode plot of the system was obtained using the Fourier transform of the impulse response and compared with the theoretical plot from the transfer function.  
+The damping coefficient \( \xi \) was estimated using two methods: logarithmic decrement and half-power bandwidth.  
+The system behavior (underdamped, critically damped, or overdamped) was determined based on the value of \( \xi \).
+
+### 1.3 Influence of Resistance on Damping and Bandwidth  
+The Bode plot and damping coefficient were analyzed for two resistance values: \( R = 5 Ohm) and \( R = 100 Ohm).  
+The relationship between resistance, damping, and bandwidth was investigated, and the approximate value of \( R \) for critical damping was determined.
+
+---
+
+## 2. Time and Frequency Domain Analysis 🔄
+
+### 2.1 Response to Sinusoidal Excitation and Phase Shift Calculation  
+The system response to a sinusoidal input signal (amplitude 1, frequencies 70 kHz, 80 kHz, 90 kHz) was simulated.  
+The amplitude of the output signal and the phase shift between input and output were measured and compared with the theoretical values from the Bode plot.
+
+### 2.2 Convolution with Impulse Response  
+The response to sinusoidal excitation was also calculated using the convolution of the input signal with the system's impulse response.  
+The result was compared with the direct simulation from Task 2.1, confirming the correctness of the impulse response and the linear time-invariant (LTI) property of the system.
 
