@@ -47,3 +47,33 @@ We repeated the analysis from task 2.1 in the frequency domain. We performed the
 
 ---
 
+# Laboratory 3 ⚡ RLC Circuit Analysis
+
+## 1. RLC Circuit Modeling and Frequency Response 📈
+
+### 1.1 Impulse Response of the RLC Circuit  
+We modeled an RLC circuit using its transfer function based on Kirchhoff's laws.  
+The impulse response of the system was calculated analytically in the time domain using the `forced_response` function.  
+System parameters: \( R = 10 Ohm), \( C = 1\*10^-6 F), \( L = 4\*10-6 H).
+
+### 1.2 Bode Plot and Damping Estimation  
+The Bode plot of the system was obtained using the Fourier transform of the impulse response and compared with the theoretical plot from the transfer function.  
+The damping coefficient \( \xi \) was estimated using two methods: logarithmic decrement and half-power bandwidth.  
+The system behavior (underdamped, critically damped, or overdamped) was determined based on the value of \( \xi \).
+
+### 1.3 Influence of Resistance on Damping and Bandwidth  
+The Bode plot and damping coefficient were analyzed for two resistance values: \( R = 5 Ohm) and \( R = 100 Ohm).  
+The relationship between resistance, damping, and bandwidth was investigated, and the approximate value of \( R \) for critical damping was determined.
+
+---
+
+## 2. Time and Frequency Domain Analysis 🔄
+
+### 2.1 Response to Sinusoidal Excitation and Phase Shift Calculation  
+The system response to a sinusoidal input signal (amplitude 1, frequencies 70 kHz, 80 kHz, 90 kHz) was simulated.  
+The amplitude of the output signal and the phase shift between input and output were measured and compared with the theoretical values from the Bode plot.
+
+### 2.2 Convolution with Impulse Response  
+The response to sinusoidal excitation was also calculated using the convolution of the input signal with the system's impulse response.  
+The result was compared with the direct simulation from Task 2.1, confirming the correctness of the impulse response and the linear time-invariant (LTI) property of the system.
+
