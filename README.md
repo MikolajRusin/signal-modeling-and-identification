@@ -77,7 +77,7 @@ The amplitude of the output signal and the phase shift between input and output 
 The response to sinusoidal excitation was also calculated using the convolution of the input signal with the system's impulse response.  
 The result was compared with the direct simulation from Task 2.1, confirming the correctness of the impulse response and the linear time-invariant (LTI) property of the system.
 
-# Laboratory 3 ⚡ RLC and RC Circuit Frequency Response Analysis
+# Laboratory 4 ⚡ RLC and RC Circuit Frequency Response Analysis
 
 ## 1. Frequency Response Estimation Using Chirp and Noise
 
