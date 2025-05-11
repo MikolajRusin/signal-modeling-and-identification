@@ -58,7 +58,7 @@ System parameters: \( R = 10 Ohm), \( C = 1\*10^-6 F), \( L = 4\*10-6 H).
 
 ### 1.2 Bode Plot and Damping Estimation  
 The Bode plot of the system was obtained using the Fourier transform of the impulse response and compared with the theoretical plot from the transfer function.  
-The damping coefficient \( \xi \) was estimated using two methods: logarithmic decrement and half-power bandwidth.  
+The damping coefficient was estimated using two methods: logarithmic decrement and half-power bandwidth.  
 The system behavior (underdamped, critically damped, or overdamped) was determined based on the value of \( \xi \).
 
 ### 1.3 Influence of Resistance on Damping and Bandwidth  
@@ -77,3 +77,29 @@ The amplitude of the output signal and the phase shift between input and output 
 The response to sinusoidal excitation was also calculated using the convolution of the input signal with the system's impulse response.  
 The result was compared with the direct simulation from Task 2.1, confirming the correctness of the impulse response and the linear time-invariant (LTI) property of the system.
 
+# Laboratory 3 ⚡ RLC and RC Circuit Frequency Response Analysis
+
+## 1. Frequency Response Estimation Using Chirp and Noise
+
+### 1.1 Frequency Response from Chirp Signal 📊
+Measured the input and output signals of RC and RLC filters excited by chirp signals. The frequency response was estimated using FFT-based division of the output and input spectra. Bode plots (magnitude and phase) were generated and compared with the theoretical models.
+
+### 1.2 Corrected Theoretical Model for RLC Filter 🛠️
+To improve model accuracy, parasitic resistance of the inductor and circuit traces was introduced into the RLC transfer function. Real component values were measured with a multimeter, and inductance was estimated via curve fitting to match the empirical frequency response.
+
+---
+
+## 2. Transfer Function Estimation Using Welch Periodogram
+
+### 2.1 Welch-Based H1 Estimator Implementation 📐
+Used the `tfestimate` method (Welch periodogram) to estimate the frequency response. Applied windowing and 50% overlap to the signals to compute cross-spectral and auto-spectral densities. Estimated the H1 transfer function and compared with FFT-based result.
+
+---
+
+## 3. Frequency Response from Noise Excitation 🔊
+
+### 3.1 FFT-Based Estimation from Noise-Driven Data
+Repeated the process from Task 1.1 but using white noise signals as input. Both RC and RLC filters were analyzed, and Bode plots were compared to theoretical transfer functions, including the corrected model for the RLC filter.
+
+### 3.2 Transfer Function Estimation via `tfestimate` with Varying Resolution 🎚️
+Applied the `tfestimate` function on noise-driven RC and RLC data using three different frequency resolutions (`df = 1`, `10`, `100`). The effect of changing resolution on noise, detail, and plot smoothness was analyzed. Final results were compared with theoretical models.
