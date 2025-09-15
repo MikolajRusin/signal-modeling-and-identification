@@ -103,3 +103,91 @@ Repeated the process from Task 1.1 but using white noise signals as input. Both 
 
 ### 3.2 Transfer Function Estimation via `tfestimate` with Varying Resolution 🎚️
 Applied the `tfestimate` function on noise-driven RC and RLC data using three different frequency resolutions (`df = 1`, `10`, `100`). The effect of changing resolution on noise, detail, and plot smoothness was analyzed. Final results were compared with theoretical models.
+
+# Laboratory Tasks
+
+---
+
+# Laboratory 5 🔁 Analytical Signal & Phase Methods
+
+## 1. Analytical Signal & Hilbert Transform 🧭
+
+### 1.1 Properties of the Analytical Signal
+Create a sinusoid `y(t)` with frequency **30 Hz**, sampling frequency **1000 Hz**, and length **N = 1000**. Obtain the analytical signal with `hilbert(y)`:
+- Plot the magnitude of the **spectrum** $|FFT(y_a)|$.
+- In time domain, plot **real** and **imaginary** parts of $y_a(t)$ on a single figure (two subplots).
+- Read the time shift $\Delta t$ between $\Re\{y_a\}$ and $\Im\{y_a\}$ and convert it to phase:
+$$
+\Delta\phi = 360^\circ \cdot \frac{\Delta t}{T}.
+$$
+
+### 1.2 Custom Hilbert via FFT ⚙️
+Re-implement the analytic signal using FFT:
+1) Compute $Y=\mathrm{FFT}(y)$.  
+2) Zero the **negative** frequencies (retain DC and Nyquist as per analytic construction; multiply positive bins by 2).  
+3) `ifft` $\rightarrow\ y_a$.  
+Compare spectrum and time plots with `scipy.signal.hilbert` and discuss differences.
+
+---
+
+## 2. Envelope & Instantaneous Frequency (Chirp) 📈
+
+Generate a **linear chirp** `y(t) = chirp(t, F0→F1)` with **N=2000**, **fs=2000 Hz**, **F0=5 Hz**, **F1=200 Hz**, and apply a **Hann** window.
+
+### 2.1 Envelope & f_inst
+With $y_a(t)=A(t)e^{j\theta(t)}$:
+- Envelope: $A(t)=|y_a(t)|$.
+- Phase (unwrap) and instantaneous frequency:
+$$
+f_{\text{inst}}(t)=\frac{1}{2\pi}\frac{d\theta(t)}{dt}\;\approx\; \frac{\Delta\theta}{2\pi}\, f_s.
+$$
+Plot $y(t)$ with $A(t)$ and plot $f_{\text{inst}}(t)$; verify the sweep vs. the designed chirp.
+
+### 2.2 Noise Robustness 🌫️
+Add white noise with $\sigma \in \{0.01, 0.1, 0.2\}$. Recompute envelope and $f_{\text{inst}}$.
+Comment where errors are largest (low SNR, window edges) and why.
+
+---
+
+## 3. Phase-Shift Estimation 🎛️
+
+### 3.1 Constant Phase Shift (−60°)
+Create `y2` shifted by $-60^\circ$:
+- **Method A:** `chirp(..., phi=-60)` (degrees).
+- **Method B:** analytic rotation:
+
+$$
+y_2(t)=\Re\{\, y_a(t) \, e^{j\phi} \,\}, \qquad \phi=-60^\circ \ \text{(use radians in code)}.
+$$
+
+Estimate the phase difference using  
+$\Delta\phi = -\arg\!\left( \sum_{t} \frac{ y_a(t)\,\overline{y_{2a}(t)} }{ \lvert y_{2a}(t)\rvert^{2} } \right)$
+
+where $y_a$ and $y_{2a}$ are analytic signals of `y` and `y2`. Compare both methods.
+
+### 3.2 Time-Varying Phase Shift ⏱️
+Create `y3` by multiplying the analytic signal by $e^{-j 2\pi t}$ and taking the real part:
+
+$$
+y_3(t)=\{Re}{(y_a(t))\ e^{-j 2\pi t} \}.
+$$
+- Compute the **average** phase shift with the previous estimator and comment on its meaning for a ramp phase.
+- Then estimate the **instantaneous** phase:
+
+$$
+\phi(t) \=\ \arg\frac{y_a(t)\,\overline{y_{3a}(t)}}{|y_{3a}(t)|^2})
+$$
+
+unwrap $\phi(t)$ and compare with the imposed law $\phi_{\text{true}}(t) = 2\pi t$.
+
+---
+
+## 4. Envelope in dB & Damping Estimate 🧯
+
+For a damped response $y(t)=A\,e^{-\lambda t}\cos(\omega t-\phi)$ with time constant $\tau=1/\lambda$:
+1) Compute the envelope $A(t)=|y_a(t)|$ and its **dB** scale (0 dB at the peak):  
+$A_{\mathrm{dB}}(t)=20\log_{10}\Big(A(t)\Big)$
+2) Fit a straight line to $A_{\mathrm{dB}}(t)$; read $\tau$ from the $-8.7\,\mathrm{dB}$ drop (i.e., $e^{-1}$).  
+3) Estimate the damping ratio $\zeta$ using $\tau=\dfrac{1}{\zeta\,\omega_n}$ and compare with the theoretical value.
+
+---
